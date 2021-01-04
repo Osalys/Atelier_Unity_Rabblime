@@ -5,20 +5,24 @@ using UnityEngine;
 public class SeedScript : MonoBehaviour
 {
     
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter (Collider other)
     {
+        HenryController controller = other.GetComponent<HenryController>();
         
-        if (collision.collider.tag=="Player")
+        if (controller != null)
         {
-            GameObject.Find("Plantations").GetComponent<PlantationScript>().CanPlant = true;
-
-            GetComponent<AudioSource>().Play();
-            GetComponent<MeshRenderer>().enabled = false;
-            GetComponent<BoxCollider>().enabled = false;
-            Destroy(transform.gameObject, 0.15f);
-
+            if (controller.seed < controller.maxSeed)
+            {
+                controller.ChangeSeed(3);
+                GameObject.Find("Plantations").GetComponent<PlantationScript>().CanPlant = true;
+                GetComponent<AudioSource>().Play();
+                GetComponent<MeshRenderer>().enabled = false;
+                GetComponent<BoxCollider>().enabled = false;
+                Destroy(transform.gameObject, 0.13f);
+            }
             
         }
+     
 
     }
 

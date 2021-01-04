@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class HenryController : MonoBehaviour
 {
+    public int maxHealth = 5;
+    int currentHealth;
+
+    public int maxSeed = 3;
+    public int seed { get { return currentSeed; } }
+    int currentSeed;
+
+    public int maxCarrot = 10;
+    public int carrot { get { return currentCarrot; } }
+    int currentCarrot;
+
     float axisH, axisV;
     Animator henryAnimator;
 
@@ -24,6 +35,14 @@ public class HenryController : MonoBehaviour
         henryAudioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
     }
+
+    void Start ()
+    {
+        currentHealth = maxHealth;
+        currentSeed = 0;
+        currentCarrot = 0;
+    }
+
     void Update()
     {
         axisH = Input.GetAxis("Horizontal");
@@ -124,6 +143,24 @@ public class HenryController : MonoBehaviour
         
     }
 
+    public void ChangeHealth(int amount)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        Debug.Log(currentHealth + "/" + maxHealth);
+    }
+
+    // Nombre de graines
+    public void ChangeSeed(int amount)
+    {
+        currentSeed = Mathf.Clamp(currentSeed + amount, 0, maxSeed);
+        Debug.Log(currentSeed + "/" + maxSeed);
+    }
+
+    public void ChangeCarrot(int amount)
+    {
+        currentCarrot = Mathf.Clamp(currentCarrot + amount, 0, maxCarrot);
+        Debug.Log(currentCarrot + "/" + maxCarrot);
+    }
 
     //Planter une graine
     private void OnTriggerEnter(Collider other)
@@ -139,6 +176,8 @@ public class HenryController : MonoBehaviour
         }
         
     }
+
+  
 
     public void PlaySoundImpact()
     {

@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class CarrotScript : MonoBehaviour
 {
+    Rigidbody rigidbody;
 
-    private void OnCollisionEnter(Collision collision)
+    void Start ()
     {
+        rigidbody = GetComponent<Rigidbody>();
+    }
 
-        if (collision.collider.tag == "Player")
+
+    //carotte projectile
+   // private void Launch (Vector3 direction, float force)
+    
+  //      rigidbody.AddForce(direction * force);
+    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        HenryController controller = other.GetComponent<HenryController>();
+
+        if (controller != null)
         {
-
+            controller.ChangeCarrot(3);
             GetComponent<AudioSource>().Play();
             GetComponent<MeshRenderer>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
-            Destroy(transform.gameObject, 0.15f);
-
+            Destroy(transform.gameObject, 0.13f);
         }
 
+
     }
+
 
 
 }

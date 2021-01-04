@@ -9,7 +9,7 @@ public class SlimeScript : MonoBehaviour
 
     private Vector3 randomTargetPos;
     public float randomTargetDistMin = 2;
-    public float randomTargetDistMax = 10;
+    public float randomTargetDistMax = 5;
     public bool useRandomTarget = false;
 
     public float distStop = 1;
@@ -100,6 +100,24 @@ public class SlimeScript : MonoBehaviour
         randomTargetPos = Random.onUnitSphere;
         randomTargetPos = randomTargetPos.normalized * Random.Range(randomTargetDistMin, randomTargetDistMax);
     }
+
+    //degat des lapins slimes
+    void OnCollisionEnter (Collision other)
+    {
+        HenryController player = other.gameObject.GetComponent<HenryController>();
+
+        if (player != null)
+        {
+            player.ChangeHealth(-1);
+        }
+
+        if(other.collider.tag == "Projectile")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
 
     //sonorisation des lapins slime
     public void PlayJumpSteps()
