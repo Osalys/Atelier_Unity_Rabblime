@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7668148511280301393}
   m_Layer: 9
   m_Name: Tomato_Fruit
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

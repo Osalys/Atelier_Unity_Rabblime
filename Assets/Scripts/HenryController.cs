@@ -12,8 +12,8 @@ public class HenryController : MonoBehaviour
     int currentSeed;
 
     public int maxCarrot = 10;
-    public int carrot { get { return currentCarrot; } }
-    int currentCarrot;
+    //public int carrot { get { return currentCarrot; } }
+     int currentCarrot;
 
     float axisH, axisV;
     Animator henryAnimator;

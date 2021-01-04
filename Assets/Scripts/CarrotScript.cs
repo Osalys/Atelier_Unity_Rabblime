@@ -11,11 +11,6 @@ public class CarrotScript : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
     }
 
-
-    //carotte projectile
-   // private void Launch (Vector3 direction, float force)
-    
-  //      rigidbody.AddForce(direction * force);
     
 
     private void OnTriggerEnter(Collider other)

@@ -16,18 +16,18 @@ public class Tir : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             Launch();
+
         }
     }
 
     void Launch()
     {
-       
-            GameObject projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity) as GameObject;
-            projectileObject.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * force);
-        
-       
+        GameObject projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity) as GameObject;
+        projectileObject.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * force);
+      
     }
 }
